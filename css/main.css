@@ -1,0 +1,74 @@
+:root {
+  /* COLORS */
+  --color-warm-off-white: #fffcf4;
+  --color-cool-off-white: #e6eced;
+  --color-off-black: #0f0f0f;
+  --color-dark-grey: #1a1f28;
+  --color-lime-green: hsl(122, 66, 51);
+  --color-lime-green-light: hsl(122, 90, 83);
+  --color-dark-brown: hsl(25, 76, 31);
+  --color-dark-brown-light: hsl(25, 90, 83);
+  --color-yellow: hsl(55, 84, 55);
+  --color-yellow-light: hsl(55, 90, 83);
+  --color-salmon: hsl(15, 77, 61);
+  --color-salmon-light: hsl(15, 90, 83);
+  --color-dark-purple: hsl(282, 56, 42);
+  --color-dark-purple-light: hsl(282, 90, 83);
+  --color-shale: hsl(210, 29, 24);
+  --color-shale-light: hsl(210, 90, 83);
+  --color-dark-blue: hsl(214, 54, 39);
+  --color-dark-blue-light: hsl(214, 90, 83);
+  --color-green: hsl(145, 63, 42);
+  --color-green-light: hsl(145, 90, 83);
+  --color-purple: hsl(283, 43, 56);
+  --color-purple-light: hsl(283, 90, 83);
+  --color-blue: hsl(198, 55, 48);
+  --color-blue-light: hsl(198, 90, 83);
+  --color-red: hsl(6, 78, 57);
+  --color-red-light: hsl(6, 90, 83);
+  --color-gold: hsl(35, 64, 53);
+  --color-gold-light: hsl(35, 90, 83);
+
+  --color-background: var(--color-warm-off-white);
+  --color-light-text: var(--color-cool-off-white);
+  --color-dark-text: var(--color-off-black);
+  --color-accent: var(--color-dark-grey);
+
+  /* FONT FAMILIES */
+  --font-family-body: "Inter", sans-serif;
+  --font-family-headings: "Instrument Sans", sans-serif;
+
+  /* FONT SIZES*/
+  --font-xxsmall: 0.5rem;
+  --font-xsmall: 0.75rem;
+  --font-small: 0.875rem;
+  --font-med: 1.125rem;
+  --font-lrg: 1.25rem;
+  --font-xlrg: 1.5rem;
+  --font-xxlrg: 2rem;
+  --font-xxxlrg: 2.5rem;
+
+  /* SPACING SYSTEM*/
+  --space-xsmall: 0.25rem;
+  --space-small: 0.5rem;
+  --space-med: 0.75rem;
+  --space-lrg: 1rem;
+  --space-xlrg: 2rem;
+  --space-xxlrg: 2.5rem;
+  --space-hero: 8rem; /* for #hero section */
+
+  /* BORDER RADIUS (rounded corners) */
+  --radius-small: 0.25rem;
+  --radius-med: 0.5rem;
+  --radius-lrg: 0.75rem;
+  --radius-xlrg: 1rem;
+
+  /* BORDER WIDTHS */
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+
+  /* COMPONENT SIZING */
+  --width-nav-min: 128px;
+  --width-hamburger-min: 200px;
+}
