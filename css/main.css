@@ -36,7 +36,7 @@
 
   /* FONT FAMILIES */
   --font-family-body: "Inter", sans-serif;
-  --font-family-headings: "Instrument Sans", sans-serif;
+  --font-family-headings: "Instrument Sans", serif;
 
   /* FONT SIZES*/
   --font-xxsmall: 0.5rem;
@@ -71,4 +71,93 @@
   /* COMPONENT SIZING */
   --width-nav-min: 128px;
   --width-hamburger-min: 200px;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= FONT FACES ============= */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/Instrument_Sans/InstrumentSans-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= GLOBAL LAYOUT & BASIC ELEMENTS ============= */
+html {
+  background-color: var(--color-background);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 60vw;
+  margin: 0 auto;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= TYPOGRAPHY: SHARED TEXT/HEADINGS ============= */
+p,
+a,
+label {
+  font-family: var(--font-family-body);
+  font-size: var(--font-med);
+  font-weight: 300;
+  line-height: var(--font-xlrg);
+  color: var(--color-dark-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-headings);
+  line-height: 1.25;
+  color: var(--color-dark-text);
+  text-align: center;
+}
+
+.month-tile p {
+  text-align: center;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= SPACING & LAYOUT ============= */
+.coaster-selection {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xxlrg);
+}
+
+.coaster-information-content {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xxlrg);
+
+  div {
+    flex: 1;
+  }
 }
