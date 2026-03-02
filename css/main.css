@@ -137,7 +137,7 @@ h6 {
   text-align: center;
 }
 
-.month-tile p {
+.sign p {
   text-align: center;
 }
 
@@ -146,13 +146,13 @@ h6 {
 /**/
 /**/
 /* ============= SPACING & LAYOUT ============= */
-.coaster-selection {
+.coaster {
   display: flex;
   flex-direction: row;
   gap: var(--space-xxlrg);
 }
 
-.coaster-information-content {
+.coaster__content {
   display: flex;
   flex-direction: row;
   gap: var(--space-xxlrg);
