@@ -1,38 +1,59 @@
+/**/
+/**/
+/**/
+/**/
+/* ============= TABLE OF CONTENTS ============= */
+/* 01. CSS VARIABLES (COLORS, SPACING, SIZING) */
+/* 02. FONT FACES */
+/* 03. BASE STYLES (BODY, MAIN, LAYOUT) */
+/* 04. TYPOGRAPHY (HEADINGS, TEXT, LABELS) */
+/* 05. BUTTONS AND INTERACTIVE ELEMENTS */
+/* 06. INTRO SECTION*/
+/* 07. SIGNS (ZODIAC GRID) */
+/* 08. COASTER INFO LAYOUT */
+/* 09. METERS (TRACKS, BARS, VALUES) */
+/* 10. JS STATES */
+/* 11. UTILITIES & LAYOUT HELPERS */
+/**/
+
+/* ============= CSS VARIABLES (COLORS, SPACING, SIZING) ============= */
 :root {
   /* COLORS */
   --color-warm-off-white: #fffcf4;
   --color-cool-off-white: #e6eced;
   --color-off-black: #0f0f0f;
   --color-dark-grey: #1a1f28;
-  --color-lime-green: hsl(122, 66, 51);
-  --color-lime-green-light: hsl(122, 90, 83);
-  --color-dark-brown: hsl(25, 76, 31);
-  --color-dark-brown-light: hsl(25, 90, 83);
-  --color-yellow: hsl(55, 84, 55);
-  --color-yellow-light: hsl(55, 90, 83);
-  --color-salmon: hsl(15, 77, 61);
-  --color-salmon-light: hsl(15, 90, 83);
-  --color-dark-purple: hsl(282, 56, 42);
-  --color-dark-purple-light: hsl(282, 90, 83);
-  --color-shale: hsl(210, 29, 24);
-  --color-shale-light: hsl(210, 90, 83);
-  --color-dark-blue: hsl(214, 54, 39);
-  --color-dark-blue-light: hsl(214, 90, 83);
-  --color-green: hsl(145, 63, 42);
-  --color-green-light: hsl(145, 90, 83);
-  --color-purple: hsl(283, 43, 56);
-  --color-purple-light: hsl(283, 90, 83);
-  --color-blue: hsl(198, 55, 48);
-  --color-blue-light: hsl(198, 90, 83);
-  --color-red: hsl(6, 78, 57);
-  --color-red-light: hsl(6, 90, 83);
-  --color-gold: hsl(35, 64, 53);
-  --color-gold-light: hsl(35, 90, 83);
+  --color-light-grey: #9b9e9e;
+  --color-lime-green: hsl(122, 66%, 51%);
+  --color-lime-green-light: hsl(122, 90%, 83%);
+  --color-dark-brown: hsl(25, 76%, 31%);
+  --color-dark-brown-light: hsl(25, 90%, 83%);
+  --color-yellow: hsl(55, 84%, 55%);
+  --color-yellow-light: hsl(55, 90%, 83%);
+  --color-salmon: hsl(15, 77%, 61%);
+  --color-salmon-light: hsl(15, 90%, 83%);
+  --color-dark-purple: hsl(282, 56%, 42%);
+  --color-dark-purple-light: hsl(282, 90%, 83%);
+  --color-shale: hsl(210, 29%, 24%);
+  --color-shale-light: hsl(210, 90%, 83%);
+  --color-dark-blue: hsl(214, 54%, 39%);
+  --color-dark-blue-light: hsl(214, 90%, 83%);
+  --color-green: hsl(145, 63%, 42%);
+  --color-green-light: hsl(145, 90%, 83%);
+  --color-purple: hsl(283, 43%, 56%);
+  --color-purple-light: hsl(283, 90%, 83%);
+  --color-blue: hsl(198, 55%, 48%);
+  --color-blue-light: hsl(198, 90%, 83%);
+  --color-red: hsl(6, 78%, 57%);
+  --color-red-light: hsl(6, 90%, 83%);
+  --color-gold: hsl(35, 64%, 53%);
+  --color-gold-light: hsl(35, 90%, 83%);
 
   --color-background: var(--color-warm-off-white);
   --color-light-text: var(--color-cool-off-white);
   --color-dark-text: var(--color-off-black);
   --color-accent: var(--color-dark-grey);
+  --color-accent-light: var(--color-light-grey);
 
   /* FONT FAMILIES */
   --font-family-body: "Inter", sans-serif;
@@ -95,7 +116,7 @@
 /**/
 /**/
 /**/
-/* ============= GLOBAL LAYOUT & BASIC ELEMENTS ============= */
+/* ============= BASE STYLES (BODY, MAIN, LAYOUT) ============= */
 html {
   background-color: var(--color-background);
 }
@@ -106,7 +127,7 @@ body {
 }
 
 main {
-  max-width: 60vw;
+  max-width: 70vw;
   margin: 0 auto;
 }
 
@@ -114,7 +135,7 @@ main {
 /**/
 /**/
 /**/
-/* ============= TYPOGRAPHY: SHARED TEXT/HEADINGS ============= */
+/* ============= TYPOGRAPHY (HEADINGS, TEXT, LABELS) ============= */
 p,
 a,
 label {
@@ -137,27 +158,199 @@ h6 {
   text-align: center;
 }
 
-.sign p {
+.sign span {
   text-align: center;
+  font-weight: 400;
+}
+
+.sign__icon {
+  font-size: var(--font-xlrg);
 }
 
 /**/
 /**/
 /**/
 /**/
-/* ============= SPACING & LAYOUT ============= */
+/* ============= BUTTONS AND INTERACTIVE ELEMENTS ============= */
+button {
+  font-family: var(--font-family-body);
+  line-height: var(--font-xlrg);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= INTRO SECTION ============= */
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lrg);
+  padding: var(--space-xxlrg) 0 var(--space-xlrg) 0;
+}
+
+.intro__form {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-lrg);
+}
+
+.intro__form-label {
+  font-size: var(--font-xlrg);
+  font-weight: 400;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= SIGNS (ZODIAC GRID) ============= */
+.signs {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--space-small);
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  height: 6em;
+  gap: var(--space-small);
+  padding: var(--space-small);
+  font-size: var(--font-med);
+  border-radius: var(--radius-med);
+}
+
+.sign--aries {
+  background-color: var(--color-lime-green-light);
+  border: 2px solid var(--color-lime-green);
+}
+
+.sign--taurus {
+  background-color: var(--color-dark-brown-light);
+  border: 2px solid var(--color-dark-brown);
+}
+
+.sign--gemini {
+  background-color: var(--color-yellow-light);
+  border: 2px solid var(--color-yellow);
+}
+
+.sign--cancer {
+  background-color: var(--color-salmon-light);
+  border: 2px solid var(--color-salmon);
+}
+
+.sign--leo {
+  background-color: var(--color-dark-purple-light);
+  border: 2px solid var(--color-dark-purple);
+}
+
+.sign--virgo {
+  background-color: var(--color-shale-light);
+  border: 2px solid var(--color-shale);
+}
+
+.sign--libra {
+  background-color: var(--color-dark-blue-light);
+  border: 2px solid var(--color-dark-blue);
+}
+
+.sign--scorpio {
+  background-color: var(--color-green-light);
+  border: 2px solid var(--color-green);
+}
+
+.sign--sagittarius {
+  background-color: var(--color-purple-light);
+  border: 2px solid var(--color-purple);
+}
+
+.sign--capricorn {
+  background-color: var(--color-blue-light);
+  border: 2px solid var(--color-blue);
+}
+
+.sign--aquarius {
+  background-color: var(--color-red-light);
+  border: 2px solid var(--color-red);
+}
+
+.sign--pisces {
+  background-color: var(--color-gold-light);
+  border: 2px solid var(--color-gold);
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= COASTER INFO LAYOUT ============= */
+
 .coaster {
   display: flex;
   flex-direction: row;
-  gap: var(--space-xxlrg);
+  gap: var(--space-xlrg);
+  width: 100%;
+}
+
+.coaster__info {
+  padding: var(--space-lrg) var(--space-xxlrg);
+  border: 2px solid var(--color-light-grey);
+  border-radius: var(--radius-lrg);
+  width: 100%;
 }
 
 .coaster__content {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-xxlrg);
-
-  div {
-    flex: 1;
-  }
+  width: 100%;
 }
+
+/**/
+/**/
+/**/
+/**/
+/* ============= METERS (TRACKS, BARS, VALUES) ============= */
+.meters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-small);
+}
+
+.meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meter__track {
+  border: 2px solid var(--color-light-grey);
+  height: 12em;
+  width: 2.5em;
+  flex-shrink: 0;
+}
+
+.meter__value {
+  font-size: var(--font-lrg);
+  font-weight: 500;
+}
+
+/**/
+/**/
+/**/
+/**/
+/* ============= JS STATES ============= */
+
+/**/
+/**/
+/**/
+/**/
+/* ============= UTILITIES & LAYOUT HELPERS ============= */
