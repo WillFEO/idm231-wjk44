@@ -15,15 +15,20 @@
     <main>
       <section class="intro">
         <h1 class="intro__title">
-          What Six Flags Great Adventure Coaster Are You?
+          Which Six Flags Great Adventure Coaster Are You?
         </h1>
-        <div class="intro__form">
+        <form class="intro__form">
           <label class="intro__form-label" for="birthday-selector"
             >Enter your birthday:</label
           >
-          <input class="intro__form-input" type="date" id="birthday-selector" />
+          <input
+            class="intro__form-input"
+            type="date"
+            id="birthday-selector"
+            name="birthday"
+          />
           <button class="intro__form-submit" type="submit">Submit</button>
-        </div>
+        </form>
         <div class="intro__help">
           <button class="intro__help-button">Help</button>
         </div>
@@ -67,24 +72,24 @@
                   <div class="meter__track">
                     <div class="meter__bar meter__bar--inversions"></div>
                   </div>
-                  <p class="meter__value">0</p>
+                  <p class="meter__value-inversions">0</p>
                 </div>
                 <div class="meter meter--speed">
                   <h3 class="meter__label">Top Speed</h3>
                   <div class="meter__track">
                     <div class="meter__bar meter__bar--speed"></div>
                   </div>
-                  <p class="meter__value">0 mph</p>
+                  <p class="meter__value-speed">0 mph</p>
                 </div>
                 <div class="meter meter--height">
                   <h3 class="meter__label">Height</h3>
                   <div class="meter__track">
                     <div class="meter__bar meter__bar--height"></div>
                   </div>
-                  <p class="meter__value">0 ft</p>
+                  <p class="meter__value-height">0 ft</p>
                 </div>
               </div>
-              <p class="coaster-description">
+              <p class="coaster__description">
                 Coaster description goes here. Enter your birthday or click a
                 zodiac sign to see your coaster match!
               </p>
@@ -131,5 +136,6 @@
         </div>
       </section>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>
