@@ -1,5 +1,4 @@
 let currentAudio = null;
-const birthdayForm = document.querySelector(".intro__form");
 const maxValues = {
   inversions: 10,
   speed: 150,
@@ -186,49 +185,58 @@ const signs = [
     },
   },
 ];
+const DOM = {
+  body: document.body,
+  signButtons: document.querySelectorAll(".sign"),
+  birthdayForm: document.querySelector(".intro__form"),
+
+  title: document.querySelector(".coaster__title"),
+  description: document.querySelector(".coaster__description"),
+  dates: document.querySelector(".coaster__dates"),
+
+  image: document.querySelector(".coaster__image"),
+
+  inversionsBar: document.querySelector(".meter__bar--inversions"),
+  speedBar: document.querySelector(".meter__bar--speed"),
+  heightBar: document.querySelector(".meter__bar--height"),
+
+  inversionsValue: document.querySelector(".meter__value--inversions"),
+  speedValue: document.querySelector(".meter__value--speed"),
+  heightValue: document.querySelector(".meter__value--height"),
+
+  helpButton: document.querySelector(".intro__help-button"),
+  helpOverlay: document.querySelector(".help-overlay"),
+  helpClose: document.querySelector(".help-modal__close"),
+};
 
 function updateClass(signObject) {
-  const bodyElement = document.querySelector("body");
-  bodyElement.className = `theme--${signObject.id}`;
+  DOM.body.className = `theme--${signObject.id}`;
 }
 
 function updateTextContent(signObject) {
-  const titleElement = document.querySelector(".coaster__title");
-  const descriptionElement = document.querySelector(".coaster__description");
-  const datesElement = document.querySelector(".coaster__dates");
-  const inversionsValueElement = document.querySelector(
-    ".meter__value--inversions",
-  );
-  const speedValueElement = document.querySelector(".meter__value--speed");
-  const heightValueElement = document.querySelector(".meter__value--height");
+  DOM.title.textContent = signObject.coasterName;
+  DOM.description.textContent = signObject.description;
+  DOM.dates.textContent = signObject.dateRange;
 
-  titleElement.textContent = signObject.coasterName;
-  descriptionElement.textContent = signObject.description;
-  datesElement.textContent = signObject.dateRange;
-  inversionsValueElement.textContent = signObject.stats.inversions;
-  speedValueElement.textContent = `${signObject.stats.speed} mph`;
-  heightValueElement.textContent = `${signObject.stats.height} ft`;
+  DOM.inversionsValue.textContent = signObject.stats.inversions;
+  DOM.speedValue.textContent = `${signObject.stats.speed} mph`;
+  DOM.heightValue.textContent = `${signObject.stats.height} ft`;
 }
 
 function updateImage(signObject) {
-  const imageElement = document.querySelector(".coaster__image");
-  imageElement.src = `images/${signObject.image}`;
-  imageElement.alt = signObject.coasterName;
+  DOM.image.src = `images/${signObject.image}`;
+  DOM.image.alt = signObject.coasterName;
 }
 
 function updateStatsBars(signObject) {
-  const inversionsBar = document.querySelector(".meter__bar--inversions");
-  const speedBar = document.querySelector(".meter__bar--speed");
-  const heightBar = document.querySelector(".meter__bar--height");
-
   const inversionsPercentage =
     (signObject.stats.inversions / maxValues.inversions) * 100;
   const speedPercentage = (signObject.stats.speed / maxValues.speed) * 100;
   const heightPercentage = (signObject.stats.height / maxValues.height) * 100;
 
-  inversionsBar.style.height = `${inversionsPercentage}%`;
-  speedBar.style.height = `${speedPercentage}%`;
-  heightBar.style.height = `${heightPercentage}%`;
+  DOM.inversionsBar.style.height = `${inversionsPercentage}%`;
+  DOM.speedBar.style.height = `${speedPercentage}%`;
+  DOM.heightBar.style.height = `${heightPercentage}%`;
 }
 
 function playSound(signObject) {
@@ -314,14 +322,25 @@ function handleForm(event) {
   updateUI(signObject);
 }
 
-function initialize() {
-  const signButtons = document.querySelectorAll(".sign");
-  signButtons.forEach((button) => {
+function addEventListeners() {
+  DOM.signButtons.forEach((button) => {
     button.addEventListener("click", handleSignClick);
   });
-  if (birthdayForm) {
-    birthdayForm.addEventListener("submit", handleForm);
+  if (DOM.birthdayForm) {
+    DOM.birthdayForm.addEventListener("submit", handleForm);
   }
+
+  DOM.helpButton.addEventListener("click", () => {
+    DOM.helpOverlay.classList.add("help-overlay--active");
+  });
+
+  DOM.helpClose.addEventListener("click", () => {
+    DOM.helpOverlay.classList.remove("help-overlay--active");
+  });
+}
+
+function initialize() {
+  addEventListeners();
 }
 
 document.addEventListener("DOMContentLoaded", initialize);
