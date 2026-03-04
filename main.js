@@ -1,9 +1,30 @@
+"use strict";
+
+/**/
+/**/
+/**/
+/**/
+/* ============= TABLE OF CONTENTS ============= */
+/* 01. DATA */
+/* 02. DOM CACHE */
+/* 03. HELPER FUNCTIONS */
+/* 04. UI UPDATE FUNCTIONS */
+/* 05. EVENT HANDLERS */
+/* 06. INTIALIZATION*/
+/**/
+
+/* ============= DATA ============= */
+
 let currentAudio = null;
+
 const maxValues = {
   inversions: 10,
   speed: 150,
   height: 500,
 };
+
+/* SIGN DATA */
+
 const signs = [
   {
     id: "aries",
@@ -185,6 +206,9 @@ const signs = [
     },
   },
 ];
+
+/* ============= DOM CACHE ============= */
+
 const DOM = {
   body: document.body,
   signButtons: document.querySelectorAll(".sign"),
@@ -208,6 +232,49 @@ const DOM = {
   helpOverlay: document.querySelector(".help-overlay"),
   helpClose: document.querySelector(".help-modal__close"),
 };
+
+/* ============= HELPER FUNCTIONS ============= */
+
+function getZodiac(month, day) {
+  if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+    return "capricorn";
+  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+    return "sagittarius";
+  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+    return "scorpio";
+  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+    return "libra";
+  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+    return "virgo";
+  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+    return "leo";
+  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+    return "cancer";
+  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+    return "gemini";
+  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+    return "taurus";
+  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+    return "aries";
+  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+    return "pisces";
+  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+    return "aquarius";
+  } else return null;
+}
+
+function getBirthdaySign(birthday) {
+  const date = {
+    year: birthday[0],
+    month: birthday[1],
+    day: birthday[2],
+  };
+  const month = Number(date.month);
+  const day = Number(date.day);
+  return getZodiac(month, day);
+}
+
+/* ============= UI UPDATE FUNCTIONS ============= */
 
 function updateClass(signObject) {
   DOM.body.className = `theme--${signObject.id}`;
@@ -258,85 +325,51 @@ function updateUI(signObject) {
   playSound(signObject);
 }
 
-function getSignObject(event) {
-  const clickedButton = event.currentTarget;
-  const fullClass = clickedButton.classList[1];
-  const signName = fullClass.replace("sign--", "");
-  const signObject = signs.find((item) => item.id === signName);
-  return signObject;
-}
+/* ============= EVENT HANDLERS ============= */
 
 function handleSignClick(event) {
-  const signObject = getSignObject(event);
+  const clickedButton = event.currentTarget;
+  const fullClass = [...clickedButton.classList].find((cls) =>
+    cls.startsWith("sign--"),
+  );
+  const signName = fullClass.replace("sign--", "");
+  const signObject = signs.find((item) => item.id === signName);
+
   updateUI(signObject);
 }
 
-function getZodiac(month, day) {
-  if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
-    return "capricorn";
-  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
-    return "sagittarius";
-  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
-    return "scorpio";
-  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
-    return "libra";
-  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
-    return "virgo";
-  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
-    return "leo";
-  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
-    return "cancer";
-  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
-    return "gemini";
-  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-    return "taurus";
-  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-    return "aries";
-  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
-    return "pisces";
-  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
-    return "aquarius";
-  } else return null;
-}
-
-function getBirthdaySign(birthday) {
-  const date = {
-    year: birthday[0],
-    month: birthday[1],
-    day: birthday[2],
-  };
-  const month = Number(date.month);
-  const day = Number(date.day);
-  return getZodiac(month, day);
-}
-
-function handleForm(event) {
+function handleFormSubmit(event) {
   event.preventDefault();
 
-  const birthdaySign = getBirthdaySign(
-    birthdayForm.elements.birthday.value.split("-"),
-  );
+  const form = event.currentTarget;
+  const birthdaySign = getBirthdaySign(form.elements.birthday.value.split("-"));
 
   const signObject = signs.find((item) => item.id === birthdaySign);
 
   updateUI(signObject);
 }
 
+function openHelp() {
+  DOM.helpOverlay.classList.add("help-overlay--active");
+}
+
+function closeHelp() {
+  DOM.helpOverlay.classList.remove("help-overlay--active");
+}
+
+/* ============= INITIALIZATION ============= */
+
 function addEventListeners() {
   DOM.signButtons.forEach((button) => {
     button.addEventListener("click", handleSignClick);
   });
+
   if (DOM.birthdayForm) {
-    DOM.birthdayForm.addEventListener("submit", handleForm);
+    DOM.birthdayForm.addEventListener("submit", handleFormSubmit);
   }
 
-  DOM.helpButton.addEventListener("click", () => {
-    DOM.helpOverlay.classList.add("help-overlay--active");
-  });
-
-  DOM.helpClose.addEventListener("click", () => {
-    DOM.helpOverlay.classList.remove("help-overlay--active");
-  });
+  DOM.helpButton.addEventListener("click", openHelp);
+  DOM.helpClose.addEventListener("click", closeHelp);
 }
 
 function initialize() {

@@ -11,30 +11,38 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css" />
   </head>
+
   <body class="theme--placeholder">
     <main>
+      <!-- Intro Section -->
       <section class="intro">
         <h1 class="intro__title">
           Which Six Flags Great Adventure Coaster Are You?
         </h1>
+
         <form class="intro__form">
           <label class="intro__form-label" for="birthday-selector"
             >Enter your birthday:</label
           >
+
           <input
             class="intro__form-input"
             type="date"
             id="birthday-selector"
             name="birthday"
           />
+
           <button class="intro__form-submit" type="submit">Submit</button>
         </form>
+
         <div class="intro__help">
           <button class="intro__help-button">Help</button>
         </div>
       </section>
 
+      <!-- Coaster Section -->
       <section class="coaster">
+        <!-- Zodiac Signs Group 1 -->
         <div class="signs signs--group1">
           <button class="sign sign--aries">
             <span class="sign__icon">&#9800;</span>
@@ -62,8 +70,10 @@
           </button>
         </div>
 
+        <!-- Coaster Info -->
         <div class="coaster__info">
           <h2 class="coaster__title">Coaster Title</h2>
+
           <div class="coaster__content">
             <div class="coaster__content-1">
               <div class="meters">
@@ -95,10 +105,12 @@
                   <p class="meter__value meter__value--height">0 ft</p>
                 </div>
               </div>
+
               <p class="coaster__description">
                 Coaster description goes here. Enter your birthday or click a
                 zodiac sign to see your coaster match!
               </p>
+
               <p class="coaster__dates">Sign Date Range</p>
             </div>
 
@@ -114,6 +126,7 @@
           </div>
         </div>
 
+        <!-- Zodiac Signs Group 2 -->
         <div class="signs signs--group2">
           <button class="sign sign--libra">
             <span class="sign__icon">&#9806;</span>
@@ -142,20 +155,26 @@
         </div>
       </section>
     </main>
+
+    <!-- Help Overlay -->
     <div class="help-overlay">
       <div class="help-modal">
         <h2 class="help-modal__title">How This Page Works</h2>
+
         <p class="help-modal__text">
           Enter your birthday or click on a zodiac sign to discover which Six
           Flags Great Adventure coster matches your personality!
         </p>
+
         <p class="help-modal__text">
           Each coaster displays its stats, description, and an image. Try
           different signs to explore them all!
         </p>
+
         <button class="help-modal__close">Close</button>
       </div>
     </div>
+
     <script src="main.js"></script>
   </body>
 </html>
