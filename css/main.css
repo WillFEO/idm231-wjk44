@@ -117,13 +117,11 @@
 /**/
 /**/
 /* ============= BASE STYLES (BODY, MAIN, LAYOUT) ============= */
-html {
-  background-color: var(--color-background);
-}
-
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-background);
+  transition: background-color 0.25s ease-in-out;
 }
 
 main {
@@ -158,9 +156,30 @@ h6 {
   text-align: center;
 }
 
+h1 {
+  margin-bottom: var(--space-xxlrg);
+}
+
+h2 {
+  margin-bottom: var(--space-xlrg);
+}
+
+h3 {
+  margin-bottom: var(--space-lrg);
+}
+
+p {
+  margin-bottom: var(--space-med);
+}
+
 .sign span {
   text-align: center;
   font-weight: 400;
+}
+
+.meter__track span {
+  font-family: var(--font-family-body);
+  font-weight: 600;
 }
 
 .sign__icon {
@@ -189,7 +208,7 @@ button {
   flex-direction: column;
   align-items: center;
   gap: var(--space-lrg);
-  padding: var(--space-xxlrg) 0 var(--space-xxlrg) 0;
+  margin: 4em 0 var(--space-xxlrg) 0;
 }
 
 .intro__form {
@@ -206,9 +225,10 @@ button {
 
 .intro__form-input {
   padding: var(--space-xsmall) var(--space-med);
-  border: 2px solid var(--color-light-grey);
+  border: 2px solid var(--color-accent-light);
   border-radius: var(--radius-med);
   font-size: var(--font-med);
+  transition: border-color 0.25s ease-in-out;
 }
 
 .intro__form-submit {
@@ -325,19 +345,23 @@ button {
   flex-direction: row;
   gap: var(--space-xlrg);
   width: 100%;
+  margin-bottom: 6em;
 }
 
 .coaster__info {
   display: flex;
   flex-direction: column;
-  padding: var(--space-lrg) var(--space-xxlrg);
-  border: 2px solid var(--color-light-grey);
+  padding: var(--space-xlrg) var(--space-xxlrg);
+  border: 3px solid var(--color-accent-light);
   border-radius: var(--radius-lrg);
   width: 100%;
+  transition: border-color 0.25s ease-in-out;
 }
 
 .coaster__title {
   padding-bottom: var(--space-lrg);
+  border-bottom: 3px solid var(--color-accent-light);
+  transition: border-bottom-color 0.25s ease-in-out;
 }
 
 .coaster__content {
@@ -369,7 +393,7 @@ button {
   width: 100%;
   max-height: 400px;
   overflow: hidden;
-  border: 1px solid var(--color-light-grey);
+  border: 2px solid var(--color-accent-light);
 }
 
 .imageframe img {
@@ -402,7 +426,7 @@ button {
   width: 2.5em;
   position: relative;
   flex-shrink: 0;
-  overflow: hidden;
+  margin-bottom: var(--space-med);
 }
 
 .meter__bar {
@@ -414,9 +438,28 @@ button {
   transition: height 0.5s ease-in-out;
 }
 
+.meter__scale {
+  position: absolute;
+  left: -2.5em;
+  text-align: right;
+  min-width: 2em;
+  font-size: var(--font-xsmall);
+  color: var(--color-dark-text);
+}
+
+.meter__scale--max {
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.meter__scale--min {
+  bottom: 0;
+  transform: translateY(50%);
+}
+
 .meter__value {
-  font-size: var(--font-lrg);
-  font-weight: 500;
+  font-size: var(--font-med);
+  font-weight: 400;
 }
 
 /**/
@@ -424,6 +467,65 @@ button {
 /**/
 /**/
 /* ============= JS STATES ============= */
+.theme--aries {
+  --color-accent-light: var(--color-lime-green);
+  --color-background: var(--color-lime-green-light);
+}
+
+.theme--taurus {
+  --color-accent-light: var(--color-dark-brown);
+  --color-background: var(--color-dark-brown-light);
+}
+
+.theme--gemini {
+  --color-accent-light: var(--color-yellow);
+  --color-background: var(--color-yellow-light);
+}
+
+.theme--cancer {
+  --color-accent-light: var(--color-salmon);
+  --color-background: var(--color-salmon-light);
+}
+
+.theme--leo {
+  --color-accent-light: var(--color-dark-purple);
+  --color-background: var(--color-dark-purple-light);
+}
+
+.theme--virgo {
+  --color-accent-light: var(--color-shale);
+  --color-background: var(--color-shale-light);
+}
+
+.theme--libra {
+  --color-accent-light: var(--color-dark-blue);
+  --color-background: var(--color-dark-blue-light);
+}
+
+.theme--scorpio {
+  --color-accent-light: var(--color-green);
+  --color-background: var(--color-green-light);
+}
+
+.theme--sagittarius {
+  --color-accent-light: var(--color-purple);
+  --color-background: var(--color-purple-light);
+}
+
+.theme--capricorn {
+  --color-accent-light: var(--color-blue);
+  --color-background: var(--color-blue-light);
+}
+
+.theme--aquarius {
+  --color-accent-light: var(--color-red);
+  --color-background: var(--color-red-light);
+}
+
+.theme--pisces {
+  --color-accent-light: var(--color-gold);
+  --color-background: var(--color-gold-light);
+}
 
 /**/
 /**/

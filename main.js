@@ -187,17 +187,20 @@ const signs = [
   },
 ];
 
-function updateClass(signObject) {}
+function updateClass(signObject) {
+  const bodyElement = document.querySelector("body");
+  bodyElement.className = `theme--${signObject.id}`;
+}
 
 function updateTextContent(signObject) {
   const titleElement = document.querySelector(".coaster__title");
   const descriptionElement = document.querySelector(".coaster__description");
   const datesElement = document.querySelector(".coaster__dates");
   const inversionsValueElement = document.querySelector(
-    ".meter__value-inversions",
+    ".meter__value--inversions",
   );
-  const speedValueElement = document.querySelector(".meter__value-speed");
-  const heightValueElement = document.querySelector(".meter__value-height");
+  const speedValueElement = document.querySelector(".meter__value--speed");
+  const heightValueElement = document.querySelector(".meter__value--height");
 
   titleElement.textContent = signObject.coasterName;
   descriptionElement.textContent = signObject.description;
