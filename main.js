@@ -1,4 +1,4 @@
-const allSigns = [];
+let currentAudio = null;
 const birthdayForm = document.querySelector(".intro__form");
 const maxValues = {
   inversions: 10,
@@ -231,7 +231,16 @@ function updateStatsBars(signObject) {
   heightBar.style.height = `${heightPercentage}%`;
 }
 
-function playSound(signObject) {}
+function playSound(signObject) {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
+  currentAudio = new Audio(`sounds/${signObject.sound}`);
+  currentAudio.volume = 0.25;
+  currentAudio.play();
+}
 
 function updateUI(signObject) {
   updateClass(signObject);
