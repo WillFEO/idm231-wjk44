@@ -17,14 +17,14 @@
 
 let currentAudio = null;
 
+/* Maximum meter values for each coaster stat */
 const maxValues = {
   inversions: 10,
   speed: 150,
   height: 500,
 };
 
-/* SIGN DATA */
-
+/* Static dataset linking zodiac signs to coaster info */
 const signs = [
   {
     id: "aries",
@@ -209,6 +209,7 @@ const signs = [
 
 /* ============= DOM CACHE ============= */
 
+/* Cache of frequently used DOM elements to avoid repeated document queries and improve readability/performance. */
 const DOM = {
   body: document.body,
   signButtons: document.querySelectorAll(".sign"),
@@ -235,6 +236,7 @@ const DOM = {
 
 /* ============= HELPER FUNCTIONS ============= */
 
+/* Returns zodiac sign name based on month/day cutoff ranges */
 function getZodiac(month, day) {
   if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
     return "capricorn";
@@ -263,6 +265,7 @@ function getZodiac(month, day) {
   } else return null;
 }
 
+/* Parses YYY-MM-DD input and determines zodiac id */
 function getBirthdaySign(birthday) {
   const date = {
     year: birthday[0],
@@ -276,6 +279,7 @@ function getBirthdaySign(birthday) {
 
 /* ============= UI UPDATE FUNCTIONS ============= */
 
+/* Updates body theme class based on selected sign */
 function updateClass(signObject) {
   DOM.body.className = `theme--${signObject.id}`;
 }
@@ -295,6 +299,7 @@ function updateImage(signObject) {
   DOM.image.alt = signObject.coasterName;
 }
 
+/* Calculates percentage values and updates meter bar heights accordingly */
 function updateStatsBars(signObject) {
   const inversionsPercentage =
     (signObject.stats.inversions / maxValues.inversions) * 100;
@@ -306,6 +311,7 @@ function updateStatsBars(signObject) {
   DOM.heightBar.style.height = `${heightPercentage}%`;
 }
 
+/* Stops previous audio (if any) and plays selected coaster sound */
 function playSound(signObject) {
   if (currentAudio) {
     currentAudio.pause();
@@ -317,6 +323,7 @@ function playSound(signObject) {
   currentAudio.play();
 }
 
+/* Handles zodiac button click and updates UI accordingly */
 function updateUI(signObject) {
   updateClass(signObject);
   updateTextContent(signObject);
@@ -338,6 +345,7 @@ function handleSignClick(event) {
   updateUI(signObject);
 }
 
+/* Handles birthday form submission and selects matching sign */
 function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -359,6 +367,7 @@ function closeHelp() {
 
 /* ============= INITIALIZATION ============= */
 
+/* Attaches all required event listeners */
 function addEventListeners() {
   DOM.signButtons.forEach((button) => {
     button.addEventListener("click", handleSignClick);
@@ -372,6 +381,7 @@ function addEventListeners() {
   DOM.helpClose.addEventListener("click", closeHelp);
 }
 
+/* Entry point after DOM is fully loaded */
 function initialize() {
   addEventListeners();
 }
